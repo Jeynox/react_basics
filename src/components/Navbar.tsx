@@ -1,27 +1,33 @@
-function NavBar() {
-    interface Pokemon {
-        name: string;
-        imgSrc?: string;
-      }
-      
-      interface NavBarProps {
-        setIndex: (index: number) => void;
-        pokemonList: Pokemon[];
-      }
+interface Pokemon {
+    name: string;
+    imgSrc?: string;
+  }
 
+  interface NavBarProps {
+    setPokemonIndex: (index: number) => void;
+    pokemonList: Pokemon[];
+  }
+
+
+
+function NavBar( 
+    { setPokemonIndex, pokemonList }: NavBarProps,
+) {
     return (
+      
         <nav>
-            {pokemonList.map((pokemon, index) => (
-            <button
+            {pokemonList.map((pokemon, i) => (
+            <button 
+                onClick={() => setPokemonIndex(i)}
+                value={pokemon.name}
                 key={pokemon.name}
-                type="button"
-                onClick={() => setIndex(index) :NavBarProps}
-            >
+                type="button">
                 {pokemon.name}
-            </button>
-        ))}
-      </nav>
-    )
-}
+            </button>       
+            ))}
+        </nav>
+      
+    );
+  }
 
-export default NavBar;
+  export default NavBar;
