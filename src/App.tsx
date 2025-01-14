@@ -30,23 +30,22 @@ const pokemonList = [
 
 function App() {
 
-  const [i, setI] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  const handlerClick = () => {
-    setI(i + 1);
-  }
-
-  const handlerClickChange = () => {
-    setI(i - 1);
+  const handleClick = (selectedIndex) => {
+    setIndex(selectedIndex);
   }
 
   return (
     <div>
-      <CardPokemon pokemon={
-        pokemonList[i]
+      <nav>
+        {pokemonList.map((pokemon, idx) => (
+          <button onClick={() => handleClick(idx)} key={pokemon.name}>{pokemon.name}</button>
+        ))}
+      </nav>
+      <CardPokemon 
+        pokemon={pokemonList[index]
       } />
-      {i > 0 ? <button onClick={handlerClickChange}>Précédent</button> : <button disabled onClick={handlerClickChange}>Précédent</button>}
-      {i < pokemonList.length - 1 ? <button onClick={handlerClick}>Suivant</button> : <button disabled onClick={handlerClick}>Suivant</button>}
     </div>
   );
 }
