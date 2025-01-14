@@ -1,0 +1,5 @@
+function MyTitle() {
+  return <h1>My Title</h1>;
+}
+
+export default MyTitle;
