@@ -38,11 +38,7 @@ function App() {
 
   return (
     <div>
-      <nav>
-        {pokemonList.map((pokemon, idx) => (
-          <button onClick={() => handleClick(idx)} key={pokemon.name}>{pokemon.name}</button>
-        ))}
-      </nav>
+      <NavBar setIndex={setIndex} pokemonList={pokemonList}/> 
       <CardPokemon 
         pokemon={pokemonList[index]
       } />
